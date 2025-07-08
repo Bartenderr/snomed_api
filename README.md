@@ -19,7 +19,8 @@ Built with **FastAPI**, **Docker**, and a simple HTML/CSS/JS frontend — ready 
 
 ## 📸 Screenshot
 
-![Screenshot of UI](static/screenshot.png)
+![image](https://github.com/user-attachments/assets/e0ab9711-d016-4f75-91e1-37c01ec28863)
+
 
 ---
 
@@ -40,18 +41,19 @@ docker run -p 8000:8000 snomed_api
 
 
 ## 🌐 API Reference
-Health check ``` GET /api/v1/status ```
+Health check - GET /api/v1/status 
 
-Request 
+Request - POST /api/v1/match
 ```
-POST /api/v1/match
-
 Request body
 {
   "tariff_names": ["CBC", "abdominal ultrasound"]
 }
+```
 
-Respone 
+
+Response
+```
 {
   "results": [
     {
