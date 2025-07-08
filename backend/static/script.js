@@ -7,7 +7,7 @@ async function submitTariffs() {
     return;
   }
 
-  const response = await fetch("http://localhost:8000/api/v1/match", {
+  const response = await fetch("/api/v1/match", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -27,19 +27,19 @@ async function submitTariffs() {
   tbody.innerHTML = "";
 
   results.forEach(r => {
-  const score = (r.similarity_score * 100);
-  const scoreFormatted = score.toFixed(2) + "%";
-  const scoreClass = score >= 70 ? "highlight-green" : "";
+    const score = (r.similarity_score * 100);
+    const scoreFormatted = score.toFixed(2) + "%";
+    const scoreClass = score >= 70 ? "highlight-green" : "";
 
-  const row = `<tr>
-    <td>${r.input_name}</td>
-    <td>${r.matched_name}</td>
-    <td>${r.snomed_code}</td>
-    <td>${r.snomed_description}</td>
-    <td class="${scoreClass}">${scoreFormatted}</td>
-  </tr>`;
-  tbody.innerHTML += row;
-});
+    const row = `<tr>
+      <td>${r.input_name}</td>
+      <td>${r.matched_name}</td>
+      <td>${r.snomed_code}</td>
+      <td>${r.snomed_description}</td>
+      <td class="${scoreClass}">${scoreFormatted}</td>
+    </tr>`;
+    tbody.innerHTML += row;
+  });
 
   document.getElementById("resultsSection").classList.remove("hidden");
 }
