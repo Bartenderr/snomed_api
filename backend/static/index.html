@@ -9,24 +9,57 @@
 <body>
   <div class="container">
     <h1>SNOMED Mapper Lite</h1>
-    <p>Paste your tariff names (one per line):</p>
-    <textarea id="tariffInput" placeholder="e.g. Abdominal ultrasound&#10;CBC"></textarea>
-    <button onclick="submitTariffs()">Submit</button>
+    
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('text-input')">Text Input</button>
+      <button class="tab-btn" onclick="switchTab('file-upload')">Excel Upload</button>
+    </div>
+    
+    <div id="text-input" class="tab-content active">
+      <p>Paste your tariff names (one per line):</p>
+      <textarea id="tariffInput" placeholder="e.g. Abdominal ultrasound&#10;CBC"></textarea>
+      <button onclick="submitTariffs()">Submit</button>
 
-    <div id="resultsSection" class="hidden">
-      <h2>Results</h2>
-      <table id="resultsTable">
-        <thead>
-          <tr>
-            <th>Input</th>
-            <th>Matched Name</th>
-            <th>SNOMED CODE</th>
-            <th>SNOMED DESCRIPTION EN</th>
-            <th>Confidence Score</th>
-          </tr>
-        </thead>
-        <tbody id="resultsBody"></tbody>
-      </table>
+      <div id="resultsSection" class="hidden">
+        <h2>Results</h2>
+        <table id="resultsTable">
+          <thead>
+            <tr>
+              <th>Input</th>
+              <th>Matched Name</th>
+              <th>SNOMED CODE</th>
+              <th>SNOMED DESCRIPTION EN</th>
+              <th>Confidence Score</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody"></tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div id="file-upload" class="tab-content">
+      <div class="upload-section">
+        <p>Upload your tariff Excel file:</p>
+        <div class="file-input-container">
+          <input type="file" id="tariffFile" accept=".xlsx,.xls" />
+          <label for="tariffFile" class="file-label">Choose file</label>
+          <span id="fileName">No file chosen</span>
+        </div>
+        <button onclick="uploadTariffFile()">Process File</button>
+      </div>
+      
+      <div id="fileResultsSection" class="hidden">
+        <h2>Processing Complete</h2>
+        <div class="stats" id="processingStats"></div>
+        <button id="downloadButton" class="download-btn">Download Matched Tariffs</button>
+      </div>
+      
+      <div id="uploadProgress" class="progress-container hidden">
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+        <p id="progressStatus">Processing...</p>
+      </div>
     </div>
   </div>
   <script src="/static/script.js"></script>

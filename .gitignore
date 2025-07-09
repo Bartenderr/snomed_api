@@ -1,0 +1,5 @@
+.DS_Store
+__pycache__/snomed_mapper_api.cpython-313.pyc
+backend/__pycache__/
+backend/results/
+backend/uploads/
