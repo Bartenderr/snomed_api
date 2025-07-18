@@ -171,9 +171,10 @@ def match_tariffs_from_df(leftout_df):
         snomed_codes.append(code)
         snomed_descriptions.append(description)
     
-    leftout_df['Matched SNOMED Code'] = snomed_codes
-    leftout_df['Matched SNOMED Description'] = snomed_descriptions
-
+    leftout_df['SNOMED CODE'] = snomed_codes
+    leftout_df['SNOMED DESCRIPTION EN'] = snomed_descriptions
+    leftout_df = leftout_df.astype(str)
+    
     return leftout_df
 
 
